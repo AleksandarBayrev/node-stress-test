@@ -1,5 +1,5 @@
-import { httpsAgent, v4, fetch } from "./dependencies";
-import { HttpMethod, RequestOptions, StressProperties } from "./types";
+import { httpsAgent, v4, fetch } from './dependencies'
+import { HttpMethod, RequestOptions, StressProperties } from './types'
 
 const getBody = (key: string, value: string | object | undefined, requestOptions: RequestOptions) => {
     if (requestOptions.method != HttpMethod.POST) {

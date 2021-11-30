@@ -1,4 +1,4 @@
-import { HeadersInit } from "node-fetch"
+import { HeadersInit } from './dependencies'
 
 export enum HttpMethod {
     GET = "GET",
@@ -13,4 +13,11 @@ export type RequestOptions = {
 export type StressProperties = {
     requestOptions: RequestOptions
     value?: string | object
+}
+
+export type StressConfiguration = {
+    workers: number
+    timeToRunInSeconds: number
+    url: string
+    stressProperties: StressProperties
 }
