@@ -6,6 +6,7 @@ import { stressTestConfiguration } from './config'
         stressTestConfiguration.workers,
         stressTestConfiguration.timeToRunInSeconds,
         stressTestConfiguration.url,
+        stressTestConfiguration.paths,
         stressTestConfiguration.stressProperties
     )
 })()
