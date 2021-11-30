@@ -2,12 +2,13 @@
   "name": "node-stress-test",
   "version": "1.0.0",
   "description": "Node.JS Stress test application for web APIs",
-  "main": "build/index.js",
+  "main": "build/node-stress-test.js",
   "scripts": {
-    "start": "npm run clean && npm run build && node ./build/index.js",
+    "start": "npm run clean && npm run build && npm run clean:ts && node ./build/node-stress-test.js",
     "test": "jest",
     "clean": "shx rm -rf ./build",
-    "build": "tsc -p tsconfig.json"
+    "clean:ts": "shx rm -rf ./build/ts",
+    "build": "tsc -p tsconfig.json && webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,9 @@
     "@types/uuid": "~8.3.3",
     "shx": "~0.3.3",
     "ts-jest": "~27.0.7",
-    "typescript": "~4.5.2"
+    "typescript": "~4.5.2",
+    "webpack": "~5.64.4",
+    "webpack-cli": "~4.9.1"
   },
   "dependencies": {
     "node-fetch": "~2.6.6",
