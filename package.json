@@ -1,0 +1,39 @@
+{
+  "name": "node-stress-test",
+  "version": "1.0.0",
+  "description": "Node.JS Stress test application for web APIs",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "npm run clean && npm run build && node ./build/index.js",
+    "test": "jest",
+    "clean": "shx rm -rf ./build",
+    "build": "tsc -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleksandarBayrev/node-stress-test.git"
+  },
+  "keywords": [
+    "nodejs",
+    "stress",
+    "test",
+    "typescript"
+  ],
+  "author": "Aleksandar Bayrev <aleksandarbayrev@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/AleksandarBayrev/node-stress-test/issues"
+  },
+  "homepage": "https://github.com/AleksandarBayrev/node-stress-test#readme",
+  "devDependencies": {
+    "@types/node": "~16.11.11",
+    "@types/node-fetch": "~2.5.12",
+    "@types/uuid": "~8.3.3",
+    "shx": "~0.3.3",
+    "typescript": "~4.5.2"
+  },
+  "dependencies": {
+    "node-fetch": "~2.6.6",
+    "uuid": "~8.3.2"
+  }
+}
