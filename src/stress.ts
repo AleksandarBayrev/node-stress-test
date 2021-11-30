@@ -1,29 +1,8 @@
 import { buildUrl } from './buildUrl'
-import { httpsAgent, v4, fetch } from './dependencies'
-import { HttpMethod, RequestOptions, StressProperties } from './types'
+import { v4, fetch } from './dependencies'
+import { promiseHandlers, generateRequestOptions } from './helpers';
+import { StressProperties } from './types'
 
-const getBody = (
-    key: string,
-    value: string | object | undefined,
-    requestOptions: RequestOptions
-) => {
-    if (requestOptions.method != HttpMethod.POST) {
-        return {};
-    }
-    return {
-        body: JSON.stringify({ key, value })
-    }
-}
-
-const generateRequestOptions = (
-    key: string,
-    value: string | object | undefined,
-    requestOptions: RequestOptions
-) => ({
-    ...requestOptions,
-    ...getBody(key, value, requestOptions),
-    agent: httpsAgent
-})
 
 export const stress = (
     maxCalls: number,
@@ -38,12 +17,13 @@ export const stress = (
             setInterval(() => {
                 paths.map(path => {
                     const resultUrl = buildUrl(url, path)
+                    const workerId = i + 1
                     fetch(
                         resultUrl,
                         generateRequestOptions(v4(), properties.value, properties.requestOptions)
                     )
-                        .then(x => console.log(`Request from worker ${i + 1} finished for url ${resultUrl}, status = ${JSON.stringify(x)}`))
-                        .catch(err => console.error(`Error: ${err}`))
+                        .then(x => promiseHandlers.handleSuccess(x, resultUrl, workerId))
+                        .catch(err => promiseHandlers.handleError(err, workerId))
                 })
             }, 100))
     }
