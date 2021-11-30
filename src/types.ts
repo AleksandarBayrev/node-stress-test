@@ -1,5 +1,10 @@
 import { HeadersInit } from './dependencies'
 
+export type Props = {
+    option: string
+    value: string
+}
+
 export enum HttpMethod {
     GET = "GET",
     POST = "POST"

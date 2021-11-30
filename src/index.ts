@@ -1,12 +1,18 @@
 import { stress } from './stress'
 import { stressTestConfiguration } from './config'
+import { processArguments } from './processArguments'
+import { getFinalConfig } from './getFinalConfig'
 
 (function () {
+    const params = processArguments(process)
+
+    const finalConfig = getFinalConfig(params, stressTestConfiguration)
+    console.log(finalConfig)
     stress(
-        stressTestConfiguration.workers,
-        stressTestConfiguration.timeToRunInSeconds,
-        stressTestConfiguration.url,
-        stressTestConfiguration.paths,
-        stressTestConfiguration.stressProperties
+        finalConfig.workers,
+        finalConfig.timeToRunInSeconds,
+        finalConfig.url,
+        finalConfig.paths,
+        finalConfig.stressProperties
     )
 })()
