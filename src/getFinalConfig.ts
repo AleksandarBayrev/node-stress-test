@@ -9,12 +9,14 @@ export const getFinalConfig = (params: Props[], baseConfig: StressConfiguration)
     const timeToRunInSeconds = parseInt(params.find(x => x.option === 'timeToRunInSeconds')?.value || baseConfig.timeToRunInSeconds.toString())
     const url = params.find(x => x.option === 'url')?.value || baseConfig.url
     const paths = getPaths(params.find(x => x.option === 'paths')?.value.split(',') || [], baseConfig.paths)
+    const workerInterval = parseInt(params.find(x => x.option === 'workerInterval')?.value || baseConfig.workerInterval.toString())
  
     return {
         workers,
         timeToRunInSeconds,
         url,
         paths,
+        workerInterval,
         stressProperties: baseConfig.stressProperties
     }
 }

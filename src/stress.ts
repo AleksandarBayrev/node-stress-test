@@ -9,6 +9,7 @@ export const stress = (
     secondsToRun: number,
     url: string,
     paths: string[],
+    workerInterval: number,
     properties: StressProperties
 ) => {
     let intervals: (() => NodeJS.Timeout)[] = []
@@ -25,7 +26,7 @@ export const stress = (
                         .then(x => promiseHandlers.handleSuccess(x, resultUrl, workerId))
                         .catch(err => promiseHandlers.handleError(err, workerId))
                 })
-            }, 100))
+            }, workerInterval))
     }
 
     const resultIntervals: NodeJS.Timeout[] = []

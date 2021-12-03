@@ -25,5 +25,6 @@ export type StressConfiguration = {
     timeToRunInSeconds: number
     url: string
     paths: string[]
+    workerInterval: number
     stressProperties: StressProperties
 }

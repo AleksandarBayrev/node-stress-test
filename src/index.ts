@@ -13,6 +13,7 @@ import { getFinalConfig } from './getFinalConfig'
         finalConfig.timeToRunInSeconds,
         finalConfig.url,
         finalConfig.paths,
+        finalConfig.workerInterval,
         finalConfig.stressProperties
     )
 })()
